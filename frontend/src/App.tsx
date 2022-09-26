@@ -37,84 +37,206 @@ import CodeMirror, {ReactCodeMirrorRef} from '@uiw/react-codemirror';
 import {StreamLanguage} from '@codemirror/language';
 import {githubDark, githubLight} from '@uiw/codemirror-theme-github';
 
-import {clojure} from '@codemirror/legacy-modes/mode/clojure';
-import {css} from '@codemirror/legacy-modes/mode/css'
-import {diff} from '@codemirror/legacy-modes/mode/diff'
-import {d} from '@codemirror/legacy-modes/mode/d'
-import {dockerFile} from '@codemirror/legacy-modes/mode/dockerfile'
-import {erlang} from '@codemirror/legacy-modes/mode/erlang'
-import {go} from '@codemirror/legacy-modes/mode/go';
-import {groovy} from '@codemirror/legacy-modes/mode/groovy'
-import {java} from '@codemirror/lang-java';
-import {javascript} from '@codemirror/lang-javascript';
-import {lua} from '@codemirror/legacy-modes/mode/lua'
-import {nginx} from '@codemirror/legacy-modes/mode/nginx'
-import {perl} from '@codemirror/legacy-modes/mode/perl'
-import {powerShell} from '@codemirror/legacy-modes/mode/powershell'
-import {protobuf} from '@codemirror/legacy-modes/mode/protobuf'
-import {python} from '@codemirror/legacy-modes/mode/python'
-import {ruby} from '@codemirror/legacy-modes/mode/ruby'
-import {rust} from '@codemirror/legacy-modes/mode/rust'
-import {shell} from '@codemirror/legacy-modes/mode/shell'
-import {swift} from '@codemirror/legacy-modes/mode/swift'
-import {xml} from '@codemirror/legacy-modes/mode/xml'
-import {yaml} from '@codemirror/legacy-modes/mode/yaml'
-import {html} from '@codemirror/lang-html'
-import {cpp} from '@codemirror/lang-cpp'
-import {json} from '@codemirror/lang-json'
+
+import sql from 'highlight.js/lib/languages/sql'
+import erlang from 'highlight.js/lib/languages/erlang'
+import basic from 'highlight.js/lib/languages/basic'
+import dsconfig from 'highlight.js/lib/languages/dsconfig'
+import rsl from 'highlight.js/lib/languages/rsl'
+import lisp from 'highlight.js/lib/languages/lisp'
+import qml from 'highlight.js/lib/languages/qml'
+import go from 'highlight.js/lib/languages/go'
+import nestedtext from 'highlight.js/lib/languages/nestedtext'
+import hy from 'highlight.js/lib/languages/hy'
+import vhdl from 'highlight.js/lib/languages/vhdl'
+import dos from 'highlight.js/lib/languages/dos'
+import typescript from 'highlight.js/lib/languages/typescript'
+import d from 'highlight.js/lib/languages/d'
+import groovy from 'highlight.js/lib/languages/groovy'
+import leaf from 'highlight.js/lib/languages/leaf'
+import fortran from 'highlight.js/lib/languages/fortran'
+import xml from 'highlight.js/lib/languages/xml'
+import flix from 'highlight.js/lib/languages/flix'
+import rust from 'highlight.js/lib/languages/rust'
+import cpp from 'highlight.js/lib/languages/cpp'
+import arcade from 'highlight.js/lib/languages/arcade'
+import shell from 'highlight.js/lib/languages/shell'
+import powershell from 'highlight.js/lib/languages/powershell'
+import erb from 'highlight.js/lib/languages/erb'
+import ini from 'highlight.js/lib/languages/ini'
+import lasso from 'highlight.js/lib/languages/lasso'
+import parser3 from 'highlight.js/lib/languages/parser3'
+import vbnet from 'highlight.js/lib/languages/vbnet'
+import stan from 'highlight.js/lib/languages/stan'
+import dart from 'highlight.js/lib/languages/dart'
+import avrasm from 'highlight.js/lib/languages/avrasm'
+import subunit from 'highlight.js/lib/languages/subunit'
+import angelscript from 'highlight.js/lib/languages/angelscript'
+import gams from 'highlight.js/lib/languages/gams'
+import yaml from 'highlight.js/lib/languages/yaml'
+import autoit from 'highlight.js/lib/languages/autoit'
+import elixir from 'highlight.js/lib/languages/elixir'
+import llvm from 'highlight.js/lib/languages/llvm'
+import scheme from 'highlight.js/lib/languages/scheme'
+import crystal from 'highlight.js/lib/languages/crystal'
+import handlebars from 'highlight.js/lib/languages/handlebars'
+import wren from 'highlight.js/lib/languages/wren'
+import prolog from 'highlight.js/lib/languages/prolog'
+import http from 'highlight.js/lib/languages/http'
+import scss from 'highlight.js/lib/languages/scss'
+import dockerfile from 'highlight.js/lib/languages/dockerfile'
+import pf from 'highlight.js/lib/languages/pf'
+import taggerscript from 'highlight.js/lib/languages/taggerscript'
+import latex from 'highlight.js/lib/languages/latex'
+import matlab from 'highlight.js/lib/languages/matlab'
+import ruby from 'highlight.js/lib/languages/ruby'
+import vbscript from 'highlight.js/lib/languages/vbscript'
+import django from 'highlight.js/lib/languages/django'
+import mipsasm from 'highlight.js/lib/languages/mipsasm'
+import golo from 'highlight.js/lib/languages/golo'
+import pony from 'highlight.js/lib/languages/pony'
+import ldif from 'highlight.js/lib/languages/ldif'
+import axapta from 'highlight.js/lib/languages/axapta'
+import apache from 'highlight.js/lib/languages/apache'
+import nginx from 'highlight.js/lib/languages/nginx'
+import scilab from 'highlight.js/lib/languages/scilab'
+import abnf from 'highlight.js/lib/languages/abnf'
+import delphi from 'highlight.js/lib/languages/delphi'
+import gml from 'highlight.js/lib/languages/gml'
+import purebasic from 'highlight.js/lib/languages/purebasic'
+import sas from 'highlight.js/lib/languages/sas'
+import actionscript from 'highlight.js/lib/languages/actionscript'
+import protobuf from 'highlight.js/lib/languages/protobuf'
+import c from 'highlight.js/lib/languages/c'
+import sml from 'highlight.js/lib/languages/sml'
+import smali from 'highlight.js/lib/languages/smali'
+import inform7 from 'highlight.js/lib/languages/inform7'
+import java from 'highlight.js/lib/languages/java'
+import scala from 'highlight.js/lib/languages/scala'
+import lsl from 'highlight.js/lib/languages/lsl'
+import thrift from 'highlight.js/lib/languages/thrift'
+import verilog from 'highlight.js/lib/languages/verilog'
+import nsis from 'highlight.js/lib/languages/nsis'
+import livescript from 'highlight.js/lib/languages/livescript'
+import nim from 'highlight.js/lib/languages/nim'
+import javascript from 'highlight.js/lib/languages/javascript'
+import excel from 'highlight.js/lib/languages/excel'
+import mel from 'highlight.js/lib/languages/mel'
+import moonscript from 'highlight.js/lib/languages/moonscript'
+import graphql from 'highlight.js/lib/languages/graphql'
+import roboconf from 'highlight.js/lib/languages/roboconf'
+import ebnf from 'highlight.js/lib/languages/ebnf'
+import maxima from 'highlight.js/lib/languages/maxima'
+import lua from 'highlight.js/lib/languages/lua'
+import monkey from 'highlight.js/lib/languages/monkey'
+import julia from 'highlight.js/lib/languages/julia'
+import irpf90 from 'highlight.js/lib/languages/irpf90'
+import reasonml from 'highlight.js/lib/languages/reasonml'
+import dust from 'highlight.js/lib/languages/dust'
+import tap from 'highlight.js/lib/languages/tap'
+import perl from 'highlight.js/lib/languages/perl'
+import coq from 'highlight.js/lib/languages/coq'
+import smalltalk from 'highlight.js/lib/languages/smalltalk'
+import xl from 'highlight.js/lib/languages/xl'
+import makefile from 'highlight.js/lib/languages/makefile'
+import cos from 'highlight.js/lib/languages/cos'
+import zephir from 'highlight.js/lib/languages/zephir'
+import dns from 'highlight.js/lib/languages/dns'
+import haskell from 'highlight.js/lib/languages/haskell'
+import cal from 'highlight.js/lib/languages/cal'
+import nix from 'highlight.js/lib/languages/nix'
+import diff from 'highlight.js/lib/languages/diff'
+import mercury from 'highlight.js/lib/languages/mercury'
+import glsl from 'highlight.js/lib/languages/glsl'
+import autohotkey from 'highlight.js/lib/languages/autohotkey'
+import mizar from 'highlight.js/lib/languages/mizar'
+import coffeescript from 'highlight.js/lib/languages/coffeescript'
+import ruleslanguage from 'highlight.js/lib/languages/ruleslanguage'
+import vim from 'highlight.js/lib/languages/vim'
+import less from 'highlight.js/lib/languages/less'
+import ada from 'highlight.js/lib/languages/ada'
+import ceylon from 'highlight.js/lib/languages/ceylon'
+import clean from 'highlight.js/lib/languages/clean'
+import bash from 'highlight.js/lib/languages/bash'
+import dts from 'highlight.js/lib/languages/dts'
+import asciidoc from 'highlight.js/lib/languages/asciidoc'
+import xquery from 'highlight.js/lib/languages/xquery'
+import php from 'highlight.js/lib/languages/php'
+import awk from 'highlight.js/lib/languages/awk'
+import properties from 'highlight.js/lib/languages/properties'
+import armasm from 'highlight.js/lib/languages/armasm'
+import arduino from 'highlight.js/lib/languages/arduino'
+import livecodeserver from 'highlight.js/lib/languages/livecodeserver'
+import aspectj from 'highlight.js/lib/languages/aspectj'
+import gherkin from 'highlight.js/lib/languages/gherkin'
+import r from 'highlight.js/lib/languages/r'
+import pgsql from 'highlight.js/lib/languages/pgsql'
+import oxygene from 'highlight.js/lib/languages/oxygene'
+import csp from 'highlight.js/lib/languages/csp'
+import cmake from 'highlight.js/lib/languages/cmake'
+import python from 'highlight.js/lib/languages/python'
+import fix from 'highlight.js/lib/languages/fix'
+import mojolicious from 'highlight.js/lib/languages/mojolicious'
+import accesslog from 'highlight.js/lib/languages/accesslog'
+import applescript from 'highlight.js/lib/languages/applescript'
+import profile from 'highlight.js/lib/languages/profile'
+import x86asm from 'highlight.js/lib/languages/x86asm'
+import hsp from 'highlight.js/lib/languages/hsp'
+import processing from 'highlight.js/lib/languages/processing'
+import objectivec from 'highlight.js/lib/languages/objectivec'
+import tcl from 'highlight.js/lib/languages/tcl'
+import crmsh from 'highlight.js/lib/languages/crmsh'
+import kotlin from 'highlight.js/lib/languages/kotlin'
+import step21 from 'highlight.js/lib/languages/step21'
+import csharp from 'highlight.js/lib/languages/csharp'
+import plaintext from 'highlight.js/lib/languages/plaintext'
+import json from 'highlight.js/lib/languages/json'
+import haml from 'highlight.js/lib/languages/haml'
+import clojure from 'highlight.js/lib/languages/clojure'
+import haxe from 'highlight.js/lib/languages/haxe'
+import sqf from 'highlight.js/lib/languages/sqf'
+import swift from 'highlight.js/lib/languages/swift'
+import n1ql from 'highlight.js/lib/languages/n1ql'
+import bnf from 'highlight.js/lib/languages/bnf'
+import rib from 'highlight.js/lib/languages/rib'
+import vala from 'highlight.js/lib/languages/vala'
+import stylus from 'highlight.js/lib/languages/stylus'
+import isbl from 'highlight.js/lib/languages/isbl'
+import openscad from 'highlight.js/lib/languages/openscad'
+import brainfuck from 'highlight.js/lib/languages/brainfuck'
+import routeros from 'highlight.js/lib/languages/routeros'
+import ocaml from 'highlight.js/lib/languages/ocaml'
+import fsharp from 'highlight.js/lib/languages/fsharp'
+import capnproto from 'highlight.js/lib/languages/capnproto'
+import puppet from 'highlight.js/lib/languages/puppet'
+import mathematica from 'highlight.js/lib/languages/mathematica'
+import gradle from 'highlight.js/lib/languages/gradle'
+import twig from 'highlight.js/lib/languages/twig'
+import wasm from 'highlight.js/lib/languages/wasm'
+import css from 'highlight.js/lib/languages/css'
+import q from 'highlight.js/lib/languages/q'
+import gcode from 'highlight.js/lib/languages/gcode'
+import gauss from 'highlight.js/lib/languages/gauss'
+import tp from 'highlight.js/lib/languages/tp'
+import stata from 'highlight.js/lib/languages/stata'
+import elm from 'highlight.js/lib/languages/elm'
+
+
+
 import {markdown} from '@codemirror/lang-markdown'
-import {php} from '@codemirror/lang-php'
 import {EventsOn} from "../wailsjs/runtime";
 
 
 function App() {
     const [resultText, setResultText] = useState("Please enter your name below 👇");
     const [code,setCode] =useState( "");//#hello world\n```java\nclass H extends B {\n public void { println('hello world');\n } \n}\n```\n\n"
-    const langMap = {
-        clojure: StreamLanguage.define(clojure),
-        cpp: cpp(),
-        css: StreamLanguage.define(css),
-        d: StreamLanguage.define(d),
-        diff: StreamLanguage.define(diff),
-        dockerFile: StreamLanguage.define(dockerFile),
-        erlang: StreamLanguage.define(erlang),
-        go: StreamLanguage.define(go),
-        groovy: StreamLanguage.define(groovy),
 
-        html: html(),
-        java: java().language,
-        json: json(),
-        javascript: javascript({jsx: true}),
-        lua: StreamLanguage.define(lua),
-        nginx: StreamLanguage.define(nginx),
-        php: php(),
-        python: StreamLanguage.define(python),
-        protobuf: StreamLanguage.define(protobuf),
-        ruby: StreamLanguage.define(ruby),
-        perl: StreamLanguage.define(perl),
-        powerShell: StreamLanguage.define(powerShell),
-        rust: StreamLanguage.define(rust),
-        shell: StreamLanguage.define(shell),
-        swift: StreamLanguage.define(swift),
-        xml: StreamLanguage.define(xml),
-        yaml: StreamLanguage.define(yaml)
-    }
 
             //@ts-ignore
-    langMap.markdown = markdown({
-        defaultCodeLanguage:java(),
-        //@ts-ignore
-        codeLanguages:(lang:string)=>{
-            //@ts-ignore
-            if(langMap[lang]){
-                //@ts-ignore
-                return langMap[lang]
-            }
-            return java()
-        }
+    const markdownLang = markdown({
     });
     //@ts-ignore
-    const [exts, setExts] = useState(langMap.markdown)
+    const [exts, setExts] = useState(markdownLang)
 
     let timerOpen :number
     EventsOn("pushOpen",(data)=>{
@@ -247,13 +369,26 @@ function App() {
                 .use(remarkGfm)
                 .use(remarkRehype)
                 .use(rehypeStringify)
-                .use(rehypeHighlight, {subset: false, plainText: ['txt', 'text','mermaid']})
+                .use(rehypeHighlight, {
+                    ignoreMissing:true,
+                    languages:{
+                        basic, java,ruby,python,go,javascript,typescript,
+                        erlang,perl,php,bash,less,css,csharp,json,
+                        protobuf,c,rust,lisp,d,groovy,fortran,xml,
+                        sql,cpp,shell,powershell,erb,ini,vbnet,dart,
+                        yaml,elixir,llvm,scss,dockerfile,
+                        pf,latex,matlab,vbscript,django,nginx,delphi,
+                        actionscript,lua,makefile,zephir,haskell,diff,coffeescript,
+                        vim,awk,r,cmake,haml,clojure,kotlin,tcl,swift,
+                        brainfuck,puppet,twig,gradle,wasm
+                    },
+                    plainText: ['txt', 'text','mermaid']})
                 .process(afterMatter.content);
             setHtml(file.toString());
             setTimeout(()=>{
                 insertMacBar()
             },10)
-        },200)
+        },300)
 
     }
 
