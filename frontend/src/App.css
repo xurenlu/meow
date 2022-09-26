@@ -1,0 +1,63 @@
+
+#head-nav .inline {
+    display: inline-block;
+}
+.cm-editor {
+    font-size: 17px;
+}
+.cm-editor .cm-scroller {
+    border-radius:30px !important;
+}
+#preview-area {
+    overflow: scroll;
+    line-height:1.7em;
+    min-height: 400px;
+    max-height: 660px;
+}
+#preview-area h1,#preview-area h2,#preview-area h3,#preview-area h4 {
+    line-height:1.5em;
+}
+
+
+#preview-area table {
+    border:1px solid gray;
+    margin:10px 0;
+}
+#preview-area table td {
+   padding:6px;
+}
+#preview-area table th  {
+    text-align:center;
+    font-weight: bold;
+    padding:12px 6px;
+    border-bottom: 1px solid gray;
+    border-right: 1px solid gray;
+}
+#preview-area table tbody td  {
+
+    border-right: 1px solid gray;
+    border-bottom: 1px solid gray;
+}
+
+.mac-top-bar {
+    background-color: rgb(60,60,60);
+    border-radius: 8px 8px 0 0;
+    height:32px;
+}
+h1 {
+    font-size: 2em !important;
+}
+h2 {
+    font-size: 1.8em !important;
+}
+h3 {
+    font-size:1.6em !important;
+}
+h4 {
+    font-size:1.4em !important;
+}
+/**
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
